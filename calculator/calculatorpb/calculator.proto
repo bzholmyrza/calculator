@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package="gitlab.com\\bzholmyrza\\calculator\\calculatorpb;calculatorpb";
+
+message Calculator {
+  int32 number = 1;
+}
+
+message CalculatorRequest {
+  Calculator numberRequest = 1;
+}
+
+message CalculatorResponse {
+  string result = 1;
+}
+
+message CalculatorNumbers {
+  string number = 1;
+}
+
+message CalculatorComputeAverageRequest {
+  CalculatorNumbers numberRequest = 1;
+}
+
+message CalculatorComputeAverageResponse {
+  string result = 1;
+}
+
+service CalculatorService{
+  rpc PrimeNumberDecomposition(CalculatorRequest) returns (CalculatorResponse) {};
+  rpc ComputeAverage(CalculatorComputeAverageRequest) returns (CalculatorComputeAverageResponse){};
+}
